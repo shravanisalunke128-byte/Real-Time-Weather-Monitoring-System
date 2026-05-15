@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Weather Monitoring System</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <h1><i class="fa-solid fa-cloud-sun-rain"></i> Real Time Weather Monitoring</h1>
+                <div id="connection-status" class="status-badge disconnected">
+                    <div class="pulse-dot"></div>
+                    <span id="status-text">ESP32 Disconnected (Using Dummy Data)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Cards -->
+        <main class="grid-container">
+            <!-- Temperature Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Temperature</h3>
+                    <i class="fa-solid fa-temperature-high icon temp-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="value-container">
+                        <span id="temp-val" class="value">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Humidity Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Humidity</h3>
+                    <i class="fa-solid fa-droplet icon hum-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="value-container">
+                        <span id="hum-val" class="value">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soil Moisture Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Soil Moisture</h3>
+                    <i class="fa-solid fa-seedling icon soil-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="value-container">
+                        <span id="soil-val" class="value">--</span>
+                        <span class="unit"></span>
+                    </div>
+                    <div id="soil-status" class="status-indicator">Unknown</div>
+                </div>
+            </div>
+
+            <!-- Rain Sensor Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Rain Sensor</h3>
+                    <i class="fa-solid fa-cloud-rain icon rain-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="value-container">
+                        <span id="rain-val" class="value">--</span>
+                        <span class="unit"></span>
+                    </div>
+                    <div id="rain-status" class="status-indicator">Unknown</div>
+                </div>
+            </div>
+
+            <!-- Light Sensor Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>LDR Light</h3>
+                    <i class="fa-solid fa-sun icon light-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="value-container">
+                        <span id="light-val" class="value">--</span>
+                        <span class="unit"></span>
+                    </div>
+                    <div id="light-status" class="status-indicator">Unknown</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Charts Section -->
+        <section class="charts-container">
+            <div class="card chart-card">
+                <h3>Temperature & Humidity History</h3>
+                <div class="chart-wrapper">
+                    <canvas id="weatherChart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <h3>Sensors Overview</h3>
+                <div class="chart-wrapper">
+                    <canvas id="sensorChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
